@@ -40,6 +40,15 @@ describe TravelTime do
       it 'returns the travel duration' do
         expect(TravelTime.get_travel_data(origin_address, destination_address)).to eq 31
       end
+    
+
+      context 'when you give coordinates instead of addresses' do
+        let(:startcoord) { '48.8333906,2.2448635' } 
+        let(:endcoord) { '48.8622011,2.3093474' } 
+        it 'returns the travel duration' do
+          expect(TravelTime.get_travel_data(startcoord, endcoord)).to eq 31
+        end
+      end
     end
     
   end
