@@ -1,14 +1,18 @@
-<h2>What's your travel time? </h2>
+<h2 class="text-center mt-4">What's your travel time? </h2>
 <%= form_with(url: "/travel_times") do %>
-  <%= label_tag(:origin_address, "Starting from:") %>
-  <%= text_field_tag(:origin_address) %>
+  <div class="form-group">
+    <%= label_tag(:origin_address, "Starting from:") %>
+    <%= text_field_tag :origin_address, "65 Leonard Street, London", class: "form-control" %>
+  </div>
+  <div class="form-group">
   <%= label_tag(:destination_address, "Going to:") %>
-  <%= text_field_tag(:destination_address) %>
-  <%= submit_tag("Search") %>
+  <%= text_field_tag :destination_address, nil, class: "form-control" %>
+  </div>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
 <% end %>
 <iframe
-  width="450"
-  height="250"
+  width="100%"
   frameborder="0" style="border:0"
+  class="z-depth-1-half mt-3"
   src="https://www.google.com/maps/embed/v1/place?key=<%=ENV.fetch('GOOGLE_KEY')%>&q=65 Leonard Street,London" allowfullscreen>
 </iframe>
