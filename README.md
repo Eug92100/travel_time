@@ -1,2 +1,5 @@
 # travel_time
-example of an app using the CityMapper API
+Example of an app using the CityMapper API through a simple web interface
+
+-Needs a .env
+-run migrations
