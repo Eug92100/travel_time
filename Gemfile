@@ -34,6 +34,9 @@ gem 'faraday'
 #a complete geocoding solution for rails
 gem 'geocoder'
 
+#Validation datetime
+gem 'validates_timeliness', '~> 5.0.0.alpha3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

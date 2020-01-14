@@ -80,5 +80,12 @@ describe TravelTime do
         expect(TravelTime.get_travel_data(origin_address, destination_address, time_of_arrival)).to eq 29
       end
     end
+    context 'when Geocoder can\'t find the address' do
+      let(:origin_address_wrong) { '84 rue republique, 92100 Billancourt' }
+      let(:destination_address_wrong) { '1 rue de Surcouf, Paris' }
+      it 'returns the travel duration' do
+        expect(TravelTime.get_travel_data(origin_address_wrong, destination_address_wrong, time_of_arrival)).to eq nil
+      end
+    end
   end
 end

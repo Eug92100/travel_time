@@ -1,5 +1,5 @@
 <h2 class="text-center mt-4">What's your travel time? </h2>
-<%= form_with(url: "/travel_times") do %>
+<%= form_with(url: "/travels") do %>
   <div class="form-group">
     <%= label_tag(:origin_address, "Starting from:") %>
     <%= text_field_tag :origin_address, "65 Leonard Street, London", class: "form-control" %>
@@ -9,15 +9,31 @@
     <%= text_field_tag :destination_address, nil, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= label_tag(:time_of_arrival, "Select the date and time of arrival:") %>
+    <%= label_tag(:arrival_datetime, "Select the date and time of arrival:") %>
     <div class="row">
       <div class="col">
-        <%= text_field_tag :time_of_arrival,nil, placeholder: "dd-mm-yyyy", class: "form-control"%>
+        <%= select_day @time_default, {include_blank: true}, {class: "form-control"}%>
+      </div>
+      <div class="col-1 text-center">-</div>
+      <div class="col">
+        <%= select_month @time_default,{}, {class: "form-control"}%>
+      </div>
+      <div class="col-1 text-center">-</div>
+      <div class="col">
+        <%= select_year @time_default, {}, {class: "form-control"}%>
       </div>
       <div class="col">
-        <%= text_field_tag :time_of_arrival,nil, placeholder: " hh:mm", class: "form-control" %>
+        <%= select_hour @time_default.utc ,{}, {class: "form-control"}%>
+      </div>
+      <div class="col-1 text-center">:</div>
+      <div class="col">
+        <%= select_minute @time_default.utc + 40.minute ,{}, {class: "form-control"}%>
       </div>
     </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:meeting_duration, "Duration of the meeting:") %>
+    <%= select :travel, :meeting_duration, ["10 min", "30 min", "45 min", "60 min"], {include_blank: true}, class: "form-control" %>
   </div>
   <%= submit_tag("Search", class: "btn btn-primary") %>
 <% end %>

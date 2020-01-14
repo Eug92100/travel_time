@@ -12,13 +12,15 @@ module TravelTime
   end
 
   def self.create_query_hash(origin_address, destination_address, time_of_arrival = nil)
-    query_hash = { "startcoord": get_coordinates(origin_address),
-                   "endcoord": get_coordinates(destination_address),
-                   "key": ENV.fetch('CITYMAPPER_KEY') }
-    if time_of_arrival
-      query_hash[:time] = time_of_arrival.to_s
-      query_hash[:time_type] = 'arrival'
-    end
+    if Geocoder.search(origin_address).first &&  Geocoder.search(destination_address).first
+      query_hash = { "startcoord": get_coordinates(origin_address),
+                     "endcoord": get_coordinates(destination_address),
+                     "key": ENV.fetch('CITYMAPPER_KEY') }
+      if time_of_arrival
+        query_hash[:time] = time_of_arrival.to_s
+        query_hash[:time_type] = 'arrival'
+      end
+    end    
     query_hash
   end
 

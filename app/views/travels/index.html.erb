@@ -1,0 +1,26 @@
+<h2>List of travels</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Destination</th>
+      <th>Time of arrival</th>
+      <th>Travel time</th>
+      <th>Duration of the Meeting (in min)</th>
+      <th>Delete link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @travels.each do |travel| %>
+      <tr>
+        <th><%= travel.destination_address %></th>
+        <td ><%=travel.arrival_time%></td>
+        <td ><%=travel.travel_time%></td>
+        <td ><%=travel.meeting_duration%></td>
+        <td ><%= button_to "Delete", travel_path(id: travel.id), method: :delete, class: "btn btn-outline-danger mt-1"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to "Create Travel", new_travel_path, method: :get, class: "btn btn-primary mt-1"%>
+
