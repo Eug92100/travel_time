@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Travel, type: :model do
@@ -7,7 +9,7 @@ RSpec.describe Travel, type: :model do
   context 'when all the params are right' do
     it 'creates a new travel object' do
       travel = Travel.new(origin_address: origin_address,
-                          destination_address: destination_address, 
+                          destination_address: destination_address,
                           arrival_time: arrival_datetime,
                           meeting_duration: 10,
                           travel_time: 51)
@@ -31,39 +33,39 @@ RSpec.describe Travel, type: :model do
   end
   context 'when the arrival time is not in the datetime format' do
     it 'throws an error' do
-      travel = Travel.new(origin_address: origin_address, 
+      travel = Travel.new(origin_address: origin_address,
                           destination_address: destination_address,
-                          arrival_time: "23/30/3000 33:34",
+                          arrival_time: '23/30/3000 33:34',
                           meeting_duration: 10,
                           travel_time: 51)
       travel.save
       expect(travel.errors.any?).to eq true
-      expect(travel.errors.messages).to eq :arrival_time => ["is not a valid datetime"]
+      expect(travel.errors.messages).to eq arrival_time: ['is not a valid datetime']
     end
   end
   context 'when the arrival time is before the current time' do
     it 'throws an error' do
-      travel = Travel.new(origin_address: origin_address, 
+      travel = Travel.new(origin_address: origin_address,
                           destination_address: destination_address,
                           arrival_time: DateTime.new(2000, 0o1, 13, 20, 20),
                           meeting_duration: 10,
                           travel_time: 51)
       travel.save
       expect(travel.errors.any?).to eq true
-      expect(travel.errors.messages).to eq :arrival_time => ["must be in the future"]
+      expect(travel.errors.messages).to eq arrival_time: ['must be in the future']
     end
   end
 
   context 'when the meeting time is 0' do
     it 'throws an error' do
-      travel = Travel.new(origin_address: origin_address, 
+      travel = Travel.new(origin_address: origin_address,
                           destination_address: destination_address,
                           arrival_time: arrival_datetime,
                           meeting_duration: 0,
                           travel_time: 51)
       travel.save
       expect(travel.errors.any?).to eq true
-      expect(travel.errors.full_messages.first).to eq "Meeting duration must be other than 0"
+      expect(travel.errors.full_messages.first).to eq 'Meeting duration must be other than 0'
     end
   end
 end

@@ -15,7 +15,7 @@ describe TravelTime do
     { "startcoord": '48.8333906,2.2448635',
       "endcoord": '48.8622011,2.3093474',
       "time": time_of_arrival.to_s,
-      "time_type": "arrival",
+      "time_type": 'arrival',
       "key": ENV.fetch('CITYMAPPER_KEY') }
   end
   describe '#create_query_hash' do
@@ -26,7 +26,6 @@ describe TravelTime do
     end
 
     context 'when there is a time of arrival' do
-      
       it 'creates a hash' do
         expect(TravelTime.create_query_hash(origin_address, destination_address, time_of_arrival)).to eq expected_hash_time
       end
@@ -35,7 +34,7 @@ describe TravelTime do
 
   describe '#get_travel_data' do
     let(:request_url) { 'https://developer.citymapper.com/api/1/traveltime/' }
-    let(:faraday_response){ instance_double('Faraday::Response') }
+    let(:faraday_response) { instance_double('Faraday::Response') }
     context 'when the status of the response is not 200' do
       before do
         allow(faraday_response).to receive(:status).with(no_args).and_return(400)

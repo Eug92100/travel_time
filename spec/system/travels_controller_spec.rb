@@ -22,9 +22,9 @@ RSpec.describe TravelsController, type: :system do
       before do
         allow(TravelTime).to receive(:get_travel_data).with(origin_address, destination_address, arrival_datetime).and_return(52)
         fill_in 'destination_address', with: destination_address
-        select date_hour, from: "date_hour"
-        select date_minute, from: "date_minute"
-        select '10 min', from: "travel_meeting_duration"
+        select date_hour, from: 'date_hour'
+        select date_minute, from: 'date_minute'
+        select '10 min', from: 'travel_meeting_duration'
         click_on 'Search'
       end
 
