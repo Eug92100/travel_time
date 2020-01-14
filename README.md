@@ -11,5 +11,6 @@ To run the application, you'll need to:
     ISAD_DB_PASSWORD=your password
     ISAD_DB_PORT=3306
     CITYMAPPER_KEY=your citymapper key
-    GOOGLE_KEY=your google maps key for the static map```
-  - run the migration to create the table 'travels'
+    GOOGLE_KEY=your google maps key for the static map
+```
+  - run the migration for the prod and test databases to create the table 'travels' in both
