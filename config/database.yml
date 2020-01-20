@@ -8,11 +8,11 @@
 default: &default
   encoding: utf8
   adapter: mysql2
-  database: <%= ENV.fetch("ISAD_DB_NAME") %>
-  host: <%= ENV.fetch("ISAD_DB_HOST") %>
-  username: <%= ENV.fetch("ISAD_DB_USERNAME") %>
-  password: '<%= ENV.fetch("ISAD_DB_PASSWORD") %>'
-  port: <%= ENV.fetch("ISAD_DB_PORT") %>
+  database: <%= ENV.fetch("DB_NAME") %>
+  host: <%= ENV.fetch("DB_HOST") %>
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: '<%= ENV.fetch("DB_PASSWORD") %>'
+  port: <%= ENV.fetch("DB_PORT") %>
 
 development:
   <<: *default
