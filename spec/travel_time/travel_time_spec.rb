@@ -7,16 +7,20 @@ describe TravelTime do
   let(:destination_address) { '1 rue Surcouf, Paris' }
   let(:time_of_arrival) { DateTime.new(2019, 0o1, 0o1, 22) }
   let(:expected_hash) do
-    { "startcoord": '48.8333906,2.2448635',
+    { 
+      "startcoord": '48.8333906,2.2448635',
       "endcoord": '48.8622011,2.3093474',
-      "key": ENV.fetch('CITYMAPPER_KEY') }
+      "key": ENV.fetch('CITYMAPPER_KEY') 
+    }
   end
   let(:expected_hash_time) do
-    { "startcoord": '48.8333906,2.2448635',
+    { 
+      "startcoord": '48.8333906,2.2448635',
       "endcoord": '48.8622011,2.3093474',
       "time": time_of_arrival.to_s,
       "time_type": 'arrival',
-      "key": ENV.fetch('CITYMAPPER_KEY') }
+      "key": ENV.fetch('CITYMAPPER_KEY') 
+    }
   end
   describe '#create_query_hash' do
     context 'when there is no time of arrival specified' do

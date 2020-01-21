@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TravelsController, type: :system do
+RSpec.describe TravelsController, type: :feature do
   context 'when visiting page new' do
     let(:destination_address) { 'SW9 7QA, London' }
     let(:origin_address) { '65 Leonard Street, London' }
