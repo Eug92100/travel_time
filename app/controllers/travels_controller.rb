@@ -31,7 +31,6 @@ class TravelsController < ApplicationController
     travel_time = TravelTime.get_travel_data(params['origin_address'], params['destination_address'], arrival_datetime)
     if travel_time
       @travel.update(travel_time: travel_time)
-      @travel.save
       if @travel.errors.any?
         error_messages = @travel.errors.full_messages.join(', ')
         flash[:danger] = "Errors: #{error_messages}"
